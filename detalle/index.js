@@ -8,10 +8,25 @@ const cargarPokemonDetalle = async ()  => {
     const pokemonData = await pokeResponse.json();
     console.log('pokemonData',pokemonData);
 
+    const speciesResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
+    const speciesData = await speciesResponse.json();
+    console.log('speciesData',speciesData);
+
     let typesHtml = ``;
     for (let i = 0; i < pokemonData.types.length; i++) {
         const type = pokemonData.types[i].type;
-        typesHtml += `<div class="bg-yellow-300 text-center rounded-sm p-1">${type.name}</div>`;
+        typesHtml += `<div class="border border-3 border-${speciesData.color.name}-500 text-center rounded-md p-1">${type.name}</div>`;
+    }
+
+    let statsHtml = ``;
+    for (let i = 0; i < pokemonData.stats.length; i++) {
+        const stat = pokemonData.stats[i];
+        statsHtml += `
+        <div class="grid grid-row-2 text-center">
+            <p class="text-xl font-bold text-red-500 h-5 mb-1">${stat.base_stat}</p>
+            <p class="text-xs m-0 text-gray-500">${stat.stat.name}</p>
+        </div>
+        `;
     }
 
     pokemonDetailDiv.innerHTML = '';
@@ -28,7 +43,7 @@ const cargarPokemonDetalle = async ()  => {
                     <p class="text-gray-500 text-2xl text-right">#${id}</p>
                 </div>
 
-                <div class="mt-5 bg-sky-500 p-4 rounded-xl grid grid-cols-2">
+                <div class="mt-5 bg-${speciesData.color.name}-500 p-4 rounded-xl grid grid-cols-2">
                     <div>
                         <p class="text-sm text-white">Altura:</p>
                         <p class="text-xl font-bold">${pokemonData.height/10}m</p>
@@ -49,14 +64,7 @@ const cargarPokemonDetalle = async ()  => {
                 <div class="mt-5">
                     <p class="text-sm font-bold">Estadisticas:</p>
                     <div class="grid grid-cols-3 mt-2 gap-3">
-                        <div class="grid grid-row-2 text-center">
-                            <p class="text-xl font-bold text-red-500 h-5 mb-1">60</p>
-                            <p class="text-xs m-0 text-gray-500">Ataque</p>
-                        </div>
-                        <div class="grid grid-row-2 text-center">
-                            <p class="text-xl font-bold text-red-500 h-5 mb-1">60</p>
-                            <p class="text-xs m-0 text-gray-500">HP</p>
-                        </div>
+                        ${statsHtml}
                     </div>
                 </div>
                 
