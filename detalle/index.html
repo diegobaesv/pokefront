@@ -8,7 +8,48 @@
 </head>
 <body class="bg-orange-200">
     <div class="container mx-auto p-6">
-        <div id="pokemon-detail" class="bg-amber-500 rounded-3xl p-6 shadow-xl">
+        <div id="pokemon-detail" class="bg-amber-500 rounded-3xl p-6 shadow-xl grid grid-cols-2 gap-4">
+
+            <div class="bg-white rounded-2xl p-6 shadow-xl">
+                <img 
+                    class="w-80 h-80 mx-auto object-contain"
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/1.png">
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-xl">
+                <div class="grid grid-cols-2 ">
+                    <h1 class="text-2xl font-bold">Bulbasur</h1>
+                    <p class="text-gray-500 text-2xl text-right">#1</p>
+                </div>
+
+                <div class="mt-5 bg-sky-500 p-4 rounded-xl grid grid-cols-2">
+                    <div>
+                        <p class="text-sm text-white">Altura:</p>
+                        <p class="text-xl font-bold">0.7m</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-white">Peso:</p>
+                        <p class="text-xl font-bold">6.9kg</p>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <p class="text-sm font-bold">Tipos:</p>
+                    <div class="grid grid-cols-3 mt-2 gap-3">
+                        <div class="bg-yellow-300 text-center rounded-sm p-1">Grass</div>
+                        <div class="bg-yellow-300 text-center rounded-sm p-1">Poison</div>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <p class="text-sm font-bold">Estadisticas:</p>
+                    <div class="grid grid-cols-3 mt-2 gap-3">
+                        <div class="bg-orange-300 text-center rounded-sm p-1"><strong>HP</strong><br>10</div>
+                        <div class="bg-orange-300 text-center rounded-sm p-1"><strong>Ataque</strong><br>50</div>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     </div>
 
