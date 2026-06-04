@@ -5,6 +5,10 @@ const nextBtn = document.getElementById('next-btn');
 let prevUrl = null;
 let nextUrl = null;
 
+const irDetalle = (id) => {
+    window.location.href=`detalle/?id=${id}`;
+}
+
 const cargarPokemones = async (url) => {
 
     const pokeResponse = await fetch(url);
@@ -19,7 +23,7 @@ const cargarPokemones = async (url) => {
         const splitsId = pokemon.url.split('/');
         const id = splitsId[splitsId.length - 2];
         pokemonListDiv.innerHTML += `
-        <div class="bg-white rounded-2xl shadow-md p-4 hover:scale-105 hover:shadow-xl transition duration-300 cursor-pointer">
+        <div class="bg-white rounded-2xl shadow-md p-4 hover:scale-105 hover:shadow-xl transition duration-300 cursor-pointer" onclick="irDetalle(${id})">
             <img class="w-28 h-28 mx-auto" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${id}.png">
             <h2 class="mt-3 text-lg font-bold text-center capitalize">${pokemon.name}</h2>
         </div>
